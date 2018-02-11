@@ -1,8 +1,8 @@
 install.packages("Lahman") #installs the Lahman baseball database
-library(Lahman) 
+library(Lahman)
 Teams$OBP<-(Teams$H+Teams$BB)/(Teams$AB+Teams$BB) #data for SF and HBP are incomplete in this database for some years
 counter=1 # intializes a counter variable for working through the dataframe below
-df <- data.frame(season=numeric(), #creates an empty dataframe for
+df <- data.frame(season=numeric(), #creates an empty dataframe for storing seasonal data
                  relation=numeric(), # calculated linear regression coefficient
                  stderror=numeric(), # calculted standard error
                  minRstandard=numeric(), #finds the lowest z score for an individual team
