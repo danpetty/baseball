@@ -21,8 +21,7 @@ for (year in c(1903:2016)){
   counter<-counter+1
 }
 plot(df$stderror~df$season)
-print("Hit any key for next plot")
-line <- readline()  # plot to see trends in standard error
+readline(prompt="Press [enter] to continue")
 plot(df$relation~df$season)  # plot to see trends in the coefficient
 
 #A glance at the plots shows there's no trend in either the relationship between OBP and runs scored
