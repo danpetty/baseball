@@ -1,3 +1,6 @@
+#This program runs a linear regression for runs and (almost) on-base percentage
+#for each season. Then the trend of the coefficient is plotted
+
 install.packages("Lahman") #installs the Lahman baseball database
 library(Lahman)
 Teams$OBP<-(Teams$H+Teams$BB)/(Teams$AB+Teams$BB) #data for SF and HBP are incomplete in this database for some years
@@ -17,5 +20,10 @@ for (year in c(1903:2016)){
      #sends theseason's linear regression coefficent to the dataframe
   counter<-counter+1
 }
-plot(df$stderror~df$season)  # plot to see trends in standard error
+plot(df$stderror~df$season)
+print("Hit any key for next plot")
+line <- readline()  # plot to see trends in standard error
 plot(df$relation~df$season)  # plot to see trends in the coefficient
+
+#A glance at the plots shows there's no trend in either the relationship between OBP and runs scored
+#or the standard error in
