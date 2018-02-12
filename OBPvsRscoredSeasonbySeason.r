@@ -12,8 +12,8 @@ df <- data.frame(season=numeric(), #creates an empty dataframe for storing seaso
                  maxRstandard=numeric(), # finds the highest z score for an individual team
                  stringsAsFactors=FALSE)
 for (year in c(1903:2016)){
-  newTeams <- subset(Teams, yearID==year, select=c(yearID, teamID, OBP, R)) # slices out a subset from Teams
-  testmod<-lm(newTeams$R~newTeams$OBP) # does the regression
+  newTeams <- subset(Teams, yearID==year, select=c(yearID, teamID, OBP, R, G)) # slices out a subset from Teams
+  testmod<-lm((newTeams$R/(newTeams$G))~newTeams$OBP) # does the regression
   se<-sqrt(diag(vcov(testmod)))  # calculates standard error
 
   df[counter,]<-c(season=year,relation=coef(testmod)[2], stderror=se[2],minRstandard=min(rstandard(testmod)),maxRstandard=max(rstandard(testmod)))
